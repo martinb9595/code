@@ -4,21 +4,30 @@ function getComputerChoice() {
   return playHand;
 }
 
+let scorePlayer = 0;
+let scoreComputer = 0;
+
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == "paper" && computerSelection == "Paper") {
     return "It's a tie!";
   } else if (playerSelection == "paper" && computerSelection == "Rock") {
-    return "Paper wins!";
+    scorePlayer = scorePlayer + 1;
+    return "Paper wins! +1 Score for player!";
   } else if (playerSelection == "paper" && computerSelection == "Scissors") {
-    return "Scissors win!";
+    scorePlayer = scorePlayer + 1;
+    return "Scissors win! +1 Score for player!";
   } else if (playerSelection == "rock" && computerSelection == "Scissors") {
-    return "Rock wins!";
+    scorePlayer = scorePlayer + 1;
+    return "Rock wins! +1 Score for player!";
   } else if (computerSelection == "Paper" && playerSelection == "rock") {
-    return "Paper wins!";
+    scoreComputer = scoreComputer + 1;
+    return "Paper wins! +1 Score for computer!";
   } else if (computerSelection == "Rock" && playerSelection == "scissors") {
-    return "Rock wins!";
+    scoreComputer = scoreComputer + 1;
+    return "Rock wins! +1 Score for computer!";
   } else if (computerSelection == "Paper" && playerSelection == "scissors") {
-    return "Scissors win!";
+    scoreComputer = scoreComputer + 1;
+    return "Scissors win! +1 Score for computer!";
   } else if (playerSelection == "rock" && playerSelection == "Rock") {
     return "It's a tie!";
   } else if (playerSelection == "scissors" && computerSelection == "Scissors") {
@@ -46,4 +55,13 @@ function game() {
   console.log(playRound(playerSelection, computerSelection5));
 }
 
-game();
+function winnerOutput() {
+  game();
+  if (scorePlayer > scoreComputer) {
+    console.log("Player wins");
+  } else if (scoreComputer > scorePlayer) {
+    console.log("Computer wins");
+  }
+}
+
+winnerOutput();
